@@ -13,6 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name = 'Home' component={MainTabScreen}/>
+        {/* <Drawer.Screen name = 'Counter' component={} */}
       </Drawer.Navigator>
     </NavigationContainer>
   );

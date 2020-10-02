@@ -2,17 +2,16 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import Counter from './Counter'
 
-const HomeScreen = ({navigation}) => {
+const CounterScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-        <Text>Hello!</Text>
-        <Text>This is our Water Tracking App.</Text>
-        <Text>Please Make Sure to Drink at Least 8 Cups a Day!!!</Text>
+          <Text>Hello</Text>
+          <Counter />
       </View>
     );
 };
 
-export default HomeScreen;
+export default CounterScreen;
 
 const styles = StyleSheet.create({
   container: {
