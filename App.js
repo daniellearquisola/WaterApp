@@ -1,30 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import { render } from "react-dom";
-import React, { Component } from "react";
+import React from "react";
 import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
-import Counter from "./Components/Counter";
+import { NavigationContainer } from '@react-navigation/native'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+
+import MainTabScreen from './Components/MainTabScreen'
+const Drawer = createDrawerNavigator()
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Drink a glass of water!</Text>
-      {/* <Button
-        onPress={() => {
-          alert("We did it!");
-        }}
-        title="Add Water"
-      /> */}
-      <Counter />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name = 'Home' component={MainTabScreen}/>
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
