@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Provider as PaperProvider } from "react-native-paper";
 
 export default class Counter extends React.Component {
   constructor() {
@@ -88,39 +89,41 @@ export default class Counter extends React.Component {
     let counter = this.state.counter;
     let image = "egg1";
     return (
-      <View style={styles.container}>
-        <Text style={{ color: "white" }}>
-          Tap on a water drop for every glass of water you drink!
-        </Text>
-        <View>
-          <Text style={{ color: "white" }}>Water Count: {counter}</Text>
-          <TouchableOpacity
-            onPress={this.onIncrement}
-            onPressOut={this.loadImage}
-          >
-            <Image
-              style={{ width: 200, height: 200 }}
-              source={{
-                uri:
-                  "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
-              }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={this.onSubtract}
-            onPressOut={this.loadImage}
-          >
-            <Icon name="remove" size={50} />
-          </TouchableOpacity>
+      <PaperProvider>
+        <View style={styles.container}>
+          <Text style={{ color: "white" }}>
+            Tap on a water drop for every glass of water you drink!
+          </Text>
+          <View>
+            <Text style={{ color: "white" }}>Water Count: {counter}</Text>
+            <TouchableOpacity
+              onPress={this.onIncrement}
+              onPressOut={this.loadImage}
+            >
+              <Image
+                style={{ width: 200, height: 200 }}
+                source={{
+                  uri:
+                    "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
+                }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={this.onSubtract}
+              onPressOut={this.loadImage}
+            >
+              <Icon name="remove" size={50} />
+            </TouchableOpacity>
+          </View>
+          <Text>{this.state.text}</Text>
+          <Image
+            style={{ width: 100, height: 120 }}
+            source={{
+              uri: this.state.image,
+            }}
+          />
         </View>
-        <Text>{this.state.text}</Text>
-        <Image
-          style={{ width: 100, height: 120 }}
-          source={{
-            uri: this.state.image,
-          }}
-        />
-      </View>
+      </PaperProvider>
     );
   }
 }
