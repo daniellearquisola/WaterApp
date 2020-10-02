@@ -7,7 +7,7 @@ import Counter from "./Components/Counter";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Drink a glass of water!</Text>
+      {/* <Text>Drink a glass of water!</Text> */}
       {/* <Button
         onPress={() => {
           alert("We did it!");
