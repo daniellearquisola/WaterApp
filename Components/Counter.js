@@ -18,6 +18,7 @@ export default class Counter extends React.Component {
       counter: 0,
       image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
       text: "Your egg is about to hatch!!",
+      date: new Date().getDate(),
     };
   }
 
@@ -85,12 +86,28 @@ export default class Counter extends React.Component {
     }
   };
 
+  componentDidMount = () => {
+    let today = new Date().getDate();
+    if (today != this.state.date) {
+      this.setState({
+        counter: 0,
+        image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
+        text: "Your egg is about to hatch!!",
+      });
+    }
+  };
+
   render() {
     let counter = this.state.counter;
-    let image = "egg1";
+    let date = new Date().getDate();
+    let month = new Date().getMonth() + 1;
+    let year = new Date().getFullYear();
     return (
       <PaperProvider>
         <View style={styles.container}>
+          <Text>
+            Today is: {month}/{date}/{year}{" "}
+          </Text>
           <Text style={{ color: "white" }}>
             Tap on a water drop for every glass of water you drink!
           </Text>
