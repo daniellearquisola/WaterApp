@@ -7,8 +7,8 @@ import {
   Button,
   TouchableOpacity,
   Image,
+  Dimensions,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Provider as PaperProvider } from "react-native-paper";
 
 export default class Counter extends React.Component {
@@ -30,7 +30,8 @@ export default class Counter extends React.Component {
     }
     if (this.state.counter === 1) {
       this.setState({
-        image: "https://img.pokemondb.net/sprites/go/normal/squirtle.png",
+        image:
+          "https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif",
         text: "You have a Squirtle!",
       });
     }
@@ -42,13 +43,14 @@ export default class Counter extends React.Component {
     if (this.state.counter === 4) {
       this.setState({
         image:
-          "https://img.pokemondb.net/sprites/go/normal/squirtle-sunglasses.png",
+          "https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif",
         text: "Your pokemon looks like it's about to evolve!",
       });
     }
     if (this.state.counter === 5) {
       this.setState({
-        image: "https://img.pokemondb.net/sprites/go/normal/wartortle.png",
+        image:
+          "https://img.pokemondb.net/sprites/black-white/anim/normal/wartortle.gif",
         text: "You have a Wartortle!",
       });
     }
@@ -60,13 +62,15 @@ export default class Counter extends React.Component {
     if (this.state.counter === 7) {
       this.setState({
         image:
-          "https://img.pokemondb.net/sprites/go/normal/wartortle-sunglasses.png",
+          "https://img.pokemondb.net/sprites/black-white/anim/back-normal/wartortle.gif",
         text: "Your pokemon looks like it's about to evolve!",
       });
     }
     if (this.state.counter === 8) {
       this.setState({
-        image: "https://img.pokemondb.net/sprites/go/normal/blastoise.png",
+        // image: "https://img.pokemondb.net/sprites/go/normal/blastoise.png",
+        image:
+          "https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif",
         text: "You have a Blastoise!",
       });
     }
@@ -102,23 +106,28 @@ export default class Counter extends React.Component {
     let date = new Date().getDate();
     let month = new Date().getMonth() + 1;
     let year = new Date().getFullYear();
+    const win = Dimensions.get("window");
+    const ratio = win.width / 541;
     return (
       <PaperProvider>
         <View style={styles.container}>
-          <Text>
-            Today is: {month}/{date}/{year}{" "}
+          <Text style={{ fontSize: 10 }}>
+            Today is: {month}/{date}/{year}
+            {"\n "}
           </Text>
-          <Text style={{ color: "white" }}>
-            Tap on a water drop for every glass of water you drink!
+          <Text style={{ color: "white", fontSize: "13", textAlign: "center" }}>
+            Tap on the water for every glass of water you drink {"\n"}
+            Tap on the leaf to remove a water glass
           </Text>
-          <View>
-            <Text style={{ color: "white" }}>Water Count: {counter}</Text>
+
+          <View style={{ flexDirection: "row" }}>
+            {/* <Text style={{ color: "white" }}>Water Count: {counter}</Text> */}
             <TouchableOpacity
               onPress={this.onIncrement}
               onPressOut={this.loadImage}
             >
               <Image
-                style={{ width: 200, height: 200 }}
+                style={{ width: 60, height: 60 }}
                 source={{
                   uri:
                     "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
@@ -131,7 +140,7 @@ export default class Counter extends React.Component {
             >
               {/* <Icon name="remove" size={50} /> */}
               <Image
-                style={{ width: 200, height: 200 }}
+                style={{ width: 60, height: 60 }}
                 source={{
                   uri:
                     "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
@@ -139,13 +148,16 @@ export default class Counter extends React.Component {
               />
             </TouchableOpacity>
           </View>
-          <Text>{this.state.text}</Text>
+          <Text style={{ color: "white", fontSize: "23" }}>
+            {"\n"}Water Count: {counter} {"\n"}
+          </Text>
           <Image
-            style={{ width: 100, height: 120 }}
+            style={{ width: win.width, height: 362 * ratio }}
             source={{
               uri: this.state.image,
             }}
           />
+          <Text style={{ fontSize: "23" }}>{this.state.text}</Text>
         </View>
       </PaperProvider>
     );
@@ -158,11 +170,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#58A0D3",
     color: "white",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "column",
   },
 
   child: {
     height: "50%",
     width: "50%",
   },
+  imageStyle: {},
 });
