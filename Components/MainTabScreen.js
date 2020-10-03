@@ -3,10 +3,13 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./HomeScreen";
 import CounterScreen from "./CounterScreen";
+import UserScreen from "./UserScreen";
+import SignUp from "./SignUp"
 import Icon from "react-native-vector-icons/Ionicons";
 
 const HomeStack = createStackNavigator();
-const CounterStack = createStackNavigator()
+const CounterStack = createStackNavigator();
+const UserStack = createStackNavigator();
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -34,6 +37,17 @@ const MainTabScreen = () => (
         ),
       }}
     />
+    <Tab.Screen
+      name="User"
+      component={UserStackScreen}
+      options={{
+        tabBarLabel: "User",
+        tabBarColor: "#1f65ff",
+        tabBarIcon: ({ color }) => (
+          <Icon name="ios-person" color={color} size={26} />
+        ),
+      }}
+    />
   </Tab.Navigator>
 );
 
@@ -49,6 +63,9 @@ const HomeStackScreen = ({ navigation }) => (
       headerTitleStyle: {
         fontWeight: "bold",
       },
+      SignUp: {
+        screen: SignUp
+      }
     }}
   >
     <HomeStack.Screen
@@ -86,7 +103,7 @@ const CounterStackScreen = ({ navigation }) => (
       options={{
         headerLeft: () => (
           <Icon.Button
-            name="ios-water"
+            name="ios-menu"
             size={25}
             backgroundColor="#009387"
             onPress={() => navigation.openDrawer()}
@@ -95,4 +112,33 @@ const CounterStackScreen = ({ navigation }) => (
       }}
     />
   </CounterStack.Navigator>
+);
+
+const UserStackScreen = ({ navigation }) => (
+  <UserStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#009387",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    }}
+  >
+    <UserStack.Screen
+      name="User"
+      component={UserScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#009387"
+            onPress={() => navigation.openDrawer()}
+          ></Icon.Button>
+        ),
+      }}
+    />
+  </UserStack.Navigator>
 );

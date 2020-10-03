@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 
 import MainTabScreen from './Components/MainTabScreen'
+import Counter from './Components/Counter'
+import User from './Components/UserScreen'
 const Drawer = createDrawerNavigator()
 
 export default function App() {
@@ -13,7 +15,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name = 'Home' component={MainTabScreen}/>
-        {/* <Drawer.Screen name = 'Counter' component={} */}
+        <Drawer.Screen name = 'Counter' component = {Counter} />
+        <Drawer.Screen name = 'User' component={User} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
