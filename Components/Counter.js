@@ -18,6 +18,7 @@ export default class Counter extends React.Component {
       counter: 0,
       image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
       text: "Your egg is about to hatch!!",
+      date: new Date().getDate(),
     };
   }
 
@@ -85,12 +86,28 @@ export default class Counter extends React.Component {
     }
   };
 
+  componentDidMount = () => {
+    let today = new Date().getDate();
+    if (today != this.state.date) {
+      this.setState({
+        counter: 0,
+        image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
+        text: "Your egg is about to hatch!!",
+      });
+    }
+  };
+
   render() {
     let counter = this.state.counter;
-    let image = "egg1";
+    let date = new Date().getDate();
+    let month = new Date().getMonth() + 1;
+    let year = new Date().getFullYear();
     return (
       <PaperProvider>
         <View style={styles.container}>
+          <Text>
+            Today is: {month}/{date}/{year}{" "}
+          </Text>
           <Text style={{ color: "white" }}>
             Tap on a water drop for every glass of water you drink!
           </Text>
@@ -112,7 +129,14 @@ export default class Counter extends React.Component {
               onPress={this.onSubtract}
               onPressOut={this.loadImage}
             >
-              <Icon name="remove" size={50} />
+              {/* <Icon name="remove" size={50} /> */}
+              <Image
+                style={{ width: 200, height: 200 }}
+                source={{
+                  uri:
+                    "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
+                }}
+              />
             </TouchableOpacity>
           </View>
           <Text>{this.state.text}</Text>
@@ -142,11 +166,3 @@ const styles = StyleSheet.create({
     width: "50%",
   },
 });
-
-//egg: https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png
-//blastoise suns: https://img.pokemondb.net/sprites/go/normal/blastoise-sunglasses.png
-//blastoise: https://img.pokemondb.net/sprites/go/normal/blastoise.png
-//wartortle suns: https://img.pokemondb.net/sprites/go/normal/wartortle-sunglasses.png
-//wartortle: https://img.pokemondb.net/sprites/go/normal/wartortle.png
-// squirtle: https://img.pokemondb.net/sprites/go/normal/squirtle.png
-//squirtle suns: https://img.pokemondb.net/sprites/go/normal/squirtle-sunglasses.png
