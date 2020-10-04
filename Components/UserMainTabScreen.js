@@ -1,9 +1,9 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeScreen from "./HomeScreen";
+import UserHomeScreen from "./UserHomeScreen";
 import CounterScreen from "./CounterScreen";
-import UserScreen from "./UserScreen";
+import UserInfoScreen from "./UserInfoScreen";
 import SignUp from "./SignUp"
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -67,7 +67,7 @@ const HomeStackScreen = ({ navigation }) => (
   >
     <HomeStack.Screen
       name="Home"
-      component={HomeScreen}
+      component={UserHomeScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
@@ -125,7 +125,7 @@ const UserStackScreen = ({ navigation }) => (
   >
     <UserStack.Screen
       name="User"
-      component={UserScreen}
+      component={UserInfoScreen}
       options={{
         headerLeft: () => (
           <Icon.Button

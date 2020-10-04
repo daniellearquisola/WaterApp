@@ -6,10 +6,9 @@ import SignUp from './SignUp'
 const HomeScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-        <Text>Hello!</Text>
+        <Text>Hello, Danielle!</Text>
         <Text>This is our Water Tracking App.</Text>
         <Text>Please Make Sure to Drink at Least 8 Cups a Day!!!</Text>
-        <Login navigation={navigation}/>
       </View>
     );
 };

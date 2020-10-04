@@ -4,7 +4,7 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 const UserScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-          <Text>This is user screen</Text>
+          <Text>Please Login to Access User Information</Text>
       </View>
     );
 };

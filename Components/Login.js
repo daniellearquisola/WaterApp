@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import SignUp from './SignUp'
+import {AuthContext} from '../Auth/context'
 
 const Login = ({navigation}) => {
 
@@ -10,6 +11,8 @@ const Login = ({navigation}) => {
         password: '',
         secureTextEntry: true
     })
+
+    const { signIn } = React.useContext(AuthContext)
 
     const emailInput = (val) => {
         if (val.length !== 0) {
@@ -40,14 +43,8 @@ const Login = ({navigation}) => {
                 placeholderTextColor='#ffffff'
                 onChangeText={(val) => passwordInput(val)}
                 />
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={() => {signIn()}}>
                     <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <Text style={styles.signup}>Don't have an account?</Text>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('SignUp')}
-                >
-                    <Text>Sign Up</Text>
                 </TouchableOpacity>
             </View>
         )

@@ -5,7 +5,6 @@ import Counter from './Counter'
 const CounterScreen = ({navigation}) => {
     return (
       <View style={styles.container}>
-          <Text>Hello</Text>
           <Counter />
       </View>
     );
