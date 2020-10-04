@@ -8,8 +8,11 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Alert,
 } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
+import * as Font from "expo-font";
+import { loadAsync } from "expo-font";
 
 export default class Counter extends React.Component {
   constructor() {
@@ -17,53 +20,58 @@ export default class Counter extends React.Component {
     this.state = {
       counter: 0,
       image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
-      text: "Your egg is about to hatch!!",
+      // text: "Your egg is about to hatch!!",
+      // text: "../Images/egg-text.png",
+      text: <Image source={require("../Images/egg-text.png")} />,
       date: new Date().getDate(),
+      alert: false,
     };
   }
 
   loadImage = () => {
     if (this.state.counter === 0) {
       this.setState({
-        image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
+        image:
+          "https://fontmeme.com/temporary/e409dfee791a58233686249f079b0499.png",
+        text: <Image source={require("../Images/egg-text.png")} />,
       });
     }
     if (this.state.counter === 1) {
       this.setState({
         image:
           "https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif",
-        text: "You have a Squirtle!",
+        text: <Image source={require("../Images/squirtle-text.png")} />,
       });
     }
     if (this.state.counter === 2) {
       this.setState({
-        text: null,
+        text: <Image source={require("../Images/happy-text.png")} />,
       });
     }
     if (this.state.counter === 4) {
       this.setState({
         image:
           "https://img.pokemondb.net/sprites/black-white/anim/back-normal/squirtle.gif",
-        text: "Your pokemon looks like it's about to evolve!",
+        text: <Image source={require("../Images/evolve2.png")} />,
       });
     }
     if (this.state.counter === 5) {
       this.setState({
         image:
           "https://img.pokemondb.net/sprites/black-white/anim/normal/wartortle.gif",
-        text: "You have a Wartortle!",
+        text: <Image source={require("../Images/wartortle-text.png")} />,
       });
     }
     if (this.state.counter === 6) {
       this.setState({
-        text: null,
+        text: <Image source={require("../Images/happy-text.png")} />,
       });
     }
     if (this.state.counter === 7) {
       this.setState({
         image:
           "https://img.pokemondb.net/sprites/black-white/anim/back-normal/wartortle.gif",
-        text: "Your pokemon looks like it's about to evolve!",
+        text: <Image source={require("../Images/evolve2.png")} />,
       });
     }
     if (this.state.counter === 8) {
@@ -71,7 +79,17 @@ export default class Counter extends React.Component {
         // image: "https://img.pokemondb.net/sprites/go/normal/blastoise.png",
         image:
           "https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif",
-        text: "You have a Blastoise!",
+        text: <Image source={require("../Images/blastoise-text.png")} />,
+        alert: true,
+      });
+    }
+    if (this.state.counter === 9) {
+      this.setState({
+        // image: "https://img.pokemondb.net/sprites/go/normal/blastoise.png",
+        image:
+          "https://img.pokemondb.net/sprites/black-white/anim/normal/blastoise.gif",
+        text: <Image source={require("../Images/happy-text.png")} />,
+        alert: false,
       });
     }
   };
@@ -96,8 +114,23 @@ export default class Counter extends React.Component {
       this.setState({
         counter: 0,
         image: "https://pkmngotrading.com/mediawiki/images/5/52/Egg1.png",
-        text: "Your egg is about to hatch!!",
+        text: "../Images/egg-text.png",
       });
+    }
+  };
+
+  simpleAlert = () => {
+    //function to make simple alert
+    Alert.alert(
+      "GREAT JOB!",
+      "You drank 8 glasses today! Your pokemon has now fully evolved!"
+    );
+  };
+
+  combinedFunction = () => {
+    this.onIncrement();
+    if (this.state.counter === 7) {
+      this.simpleAlert();
     }
   };
 
@@ -107,23 +140,58 @@ export default class Counter extends React.Component {
     let month = new Date().getMonth() + 1;
     let year = new Date().getFullYear();
     const win = Dimensions.get("window");
-    const ratio = win.width / 541;
+
     return (
-      <PaperProvider>
-        <View style={styles.container}>
-          <Text style={{ fontSize: 10 }}>
-            Today is: {month}/{date}/{year}
-            {"\n "}
-          </Text>
-          <Text style={{ color: "white", fontSize: "13", textAlign: "center" }}>
-            Tap on the water for every glass of water you drink {"\n"}
-            Tap on the leaf to remove a water glass
+      <View style={styles.container}>
+        <Text
+          style={{
+            fontSize: 12,
+            color: "white",
+            fontWeight: "bold",
+            // fontFamily: "Menlo-Regular",
+            // fontFamily: "Georgia",
+            fontFamily: "EuphemiaUCAS-Bold",
+          }}
+        >
+          Today is {month}/{date}/{year}
+          {"\n "}
+        </Text>
+
+        <View
+          style={{
+            flexDirection: "column",
+            backgroundColor: "#B1DCE6",
+            padding: 5,
+            borderRadius: 20,
+          }}
+        >
+          <Text
+            style={{
+              color: "#C75943",
+              fontSize: "14",
+              textAlign: "center",
+              fontFamily: "EuphemiaUCAS-Bold",
+              // paddingHorizontal: 45,
+            }}
+          >
+            {"\n"} Tap the water for each glass of water you drink {"\n"}
+            Tap the leaf to remove a water glass {"\n"}
           </Text>
 
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", justifyContent: "center" }}>
             {/* <Text style={{ color: "white" }}>Water Count: {counter}</Text> */}
+            <Text
+              style={{
+                color: "#C75943",
+                fontSize: "18",
+                fontWeight: "bold",
+                fontFamily: "EuphemiaUCAS-Bold",
+              }}
+            >
+              {"\n"}Your Water Count: {counter} {"\n"}
+            </Text>
             <TouchableOpacity
-              onPress={this.onIncrement}
+              onPress={this.combinedFunction}
               onPressOut={this.loadImage}
             >
               <Image
@@ -148,18 +216,21 @@ export default class Counter extends React.Component {
               />
             </TouchableOpacity>
           </View>
-          <Text style={{ color: "white", fontSize: "23" }}>
-            {"\n"}Water Count: {counter} {"\n"}
-          </Text>
-          <Image
-            style={{ width: win.width, height: 362 * ratio }}
-            source={{
-              uri: this.state.image,
-            }}
-          />
-          <Text style={{ fontSize: "23" }}>{this.state.text}</Text>
         </View>
-      </PaperProvider>
+
+        {/* <Text style={{ color: "white", fontSize: "22" }}>
+            {"\n"}Water Count: {counter} {"\n"}
+          </Text> */}
+        <Image
+          style={{ width: 240, height: 235 }}
+          source={{
+            uri: this.state.image,
+          }}
+        />
+        {/* <Text style={{ fontSize: "23" }}>{this.state.text}</Text> */}
+        {/* <Image source={require(words)} /> */}
+        {this.state.text}
+      </View>
     );
   }
 }
@@ -167,11 +238,13 @@ export default class Counter extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#58A0D3",
+    backgroundColor: "#31AAC1",
     color: "white",
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
+    width: "100%",
+    fontFamily: "monospace",
   },
 
   child: {
