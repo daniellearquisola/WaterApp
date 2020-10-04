@@ -7,11 +7,23 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import MainTabScreen from "./Components/MainTabScreen";
 
-import UserMainTabScreen from "./Components/UserMainTabScreen"
+import UserMainTabScreen from "./Components/UserMainTabScreen";
 import CounterScreen from "./Components/CounterScreen";
 import User from "./Components/UserScreen";
 import { AuthContext } from "./Auth/context";
 
+// RN >= 0.63
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs(["Warning: ..."]);
+
+// RN >= 0.52
+import { YellowBox } from "react-native";
+
+YellowBox.ignoreWarnings(["Warning: ReactNative.createElement"]);
+
+// RN < 0.52
+console.ignoredYellowBox = ["Warning: ReactNative.createElement"];
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +43,6 @@ export default function App() {
   }));
 
   return (
-
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         {userToken === null ? (
@@ -49,6 +60,5 @@ export default function App() {
         )}
       </NavigationContainer>
     </AuthContext.Provider>
-
   );
 }

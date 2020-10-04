@@ -1,24 +1,81 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
-import Login from './Login'
-import SignUp from './SignUp'
+import React, { useEffect, useRef } from "react";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  StatusBar,
+  ImageBackground,
+  Animated,
+  Image,
+} from "react-native";
+import Login from "./Login";
+import SignUp from "./SignUp";
 
-const HomeScreen = ({navigation}) => {
-    return (
+const HomeScreen = ({ navigation }) => {
+  const fade = useRef(new Animated.Value(0)).current;
+
+  React.useEffect(() => {
+    Animated.timing(fade, {
+      toValue: 1,
+      duration: 8000,
+      loop: true,
+    }).start();
+  }, [fade]);
+  return (
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={{
+        uri:
+          "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-simple-light-blue-water-splash-background-material-image_131331.jpg",
+      }}
+    >
       <View style={styles.container}>
-        <Text>Hello, Danielle!</Text>
-        <Text>This is our Water Tracking App.</Text>
-        <Text>Please Make Sure to Drink at Least 8 Cups a Day!!!</Text>
+        <Animated.View style={{ opacity: fade }}>
+          <Image source={require("../Images/Logo.png")} />
+        </Animated.View>
+
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            fontFamily: "EuphemiaUCAS-Bold",
+            color: "#404040",
+          }}
+        >
+          It is recommended to drink 8 glasses a day{"\n"}to stay hydrated.
+          Hydration gives the body{"\n"}
+          fluid to operate properly!{"\n"}
+          {"\n"} WATER-MON helps you track your water intake{"\n"}
+          You help your pokemon gain energy {"\n\n"}
+          For each glass of water you drink, {"\n"}
+          you can level up your pokemon!
+        </Text>
+        <Image
+          style={{ width: 140, height: 155 }}
+          source={{
+            uri:
+              "https://img.pokemondb.net/sprites/go/normal/squirtle-sunglasses.png",
+          }}
+        />
       </View>
-    );
+    </ImageBackground>
+  );
 };
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center'
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "space-evenly",
+
+    // backgroundColor: "#31AAC1",
+    // backgroundImage: "https://wallpapercave.com/wp/cw9Npu6.jpg",
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
   },
 });

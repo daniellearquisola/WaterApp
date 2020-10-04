@@ -1,4 +1,4 @@
-import Login from './Login'
+import Login from "./Login";
 import React, { useEffect, useRef } from "react";
 import {
   View,
@@ -37,12 +37,12 @@ const HomeScreen = ({ navigation }) => {
           <Image source={require("../Images/Logo.png")} />
         </Animated.View>
 
-
         <Text
           style={{
             fontWeight: "bold",
             textAlign: "center",
             fontFamily: "EuphemiaUCAS-Bold",
+            color: "#404040",
           }}
         >
           It is recommended to drink 8 glasses a day{"\n"}to stay hydrated.
@@ -54,6 +54,8 @@ const HomeScreen = ({ navigation }) => {
           you can level up your pokemon!
         </Text>
       </View>
+      <Login />
+      <Text>{"\n\n"}</Text>
     </ImageBackground>
     // </View>
   );

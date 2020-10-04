@@ -170,7 +170,7 @@ export default class Counter extends React.Component {
               flexDirection: "column",
               // backgroundColor: "#B1DCE6",
               backgroundColor: "#6A7B89",
-              padding: 10,
+              padding: 15,
               borderRadius: 20,
               opacity: 0.7,
             }}
@@ -185,7 +185,7 @@ export default class Counter extends React.Component {
                 // paddingHorizontal: 45,
               }}
             >
-              Tap the water when you drink one glass {"\n"}
+              Tap the water for each glass you drink {"\n"}
               Tap the leaf to remove a water glass {"\n"}
             </Text>
 
@@ -212,10 +212,12 @@ export default class Counter extends React.Component {
                 onPressOut={this.loadImage}
               >
                 <Image
-                  style={{ width: 60, height: 60, opacity: 1 }}
+                  style={{ width: 25, height: 50, opacity: 1 }}
                   source={{
+                    // uri:
+                    //   "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
                     uri:
-                      "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
+                      "https://www.pinclipart.com/picdir/big/525-5253857_unforgettable-cliparts-transparent-water-drop-png.png",
                   }}
                 />
               </TouchableOpacity>
@@ -225,10 +227,14 @@ export default class Counter extends React.Component {
               >
                 {/* <Icon name="remove" size={50} /> */}
                 <Image
-                  style={{ width: 60, height: 60, opacity: 1 }}
+                  style={{ width: 39, height: 45, opacity: 1 }}
+                  // source={{
+                  //   uri:
+                  //     "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
+                  // }}
                   source={{
                     uri:
-                      "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
+                      "https://www.pinclipart.com/picdir/big/16-168660_clipart-leaf-cartoon-leaf-transparent-background-png-download.png",
                   }}
                 />
               </TouchableOpacity>
@@ -273,6 +279,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: "cover",
-    padding: 40,
+    width: "100%",
   },
 });

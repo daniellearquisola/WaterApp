@@ -4,13 +4,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./HomeScreen";
 import CounterScreen from "./CounterScreen";
 import UserScreen from "./UserScreen";
-import SignUp from "./SignUp"
+import SignUp from "./SignUp";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const HomeStack = createStackNavigator();
 const CounterStack = createStackNavigator();
 const UserStack = createStackNavigator();
-
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -83,7 +82,8 @@ const HomeStackScreen = ({ navigation }) => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#7FAFD0"
+            // backgroundColor="#7FAFD0"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -114,7 +114,7 @@ const CounterStackScreen = ({ navigation }) => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#7FAFD0"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -127,23 +127,24 @@ const UserStackScreen = ({ navigation }) => (
   <UserStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#009387",
+        backgroundColor: "#114C9F",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#B1DCE6",
       headerTitleStyle: {
         fontWeight: "bold",
+        fontFamily: "Chalkduster",
       },
     }}
   >
     <UserStack.Screen
-      name="User"
+      name="WATER-MON"
       component={UserScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#009387"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),

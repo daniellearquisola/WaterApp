@@ -2,15 +2,13 @@ import React from "react";
 import { View, Text, Button, StyleSheet, StatusBar } from "react-native";
 import Counter from "./Counter";
 
-
-const CounterScreen = ({navigation}) => {
-    return (
-      <View style={styles.container}>
-          <Counter />
-      </View>
-    );
-
-export default CounterScreen;
+const CounterScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Counter />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -19,3 +17,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default CounterScreen;

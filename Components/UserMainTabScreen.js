@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import UserHomeScreen from "./UserHomeScreen";
 import CounterScreen from "./CounterScreen";
 import UserInfoScreen from "./UserInfoScreen";
-import SignUp from "./SignUp"
+import SignUp from "./SignUp";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const HomeStack = createStackNavigator();
@@ -14,7 +14,11 @@ const UserStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="Home" activeColor="#fff">
+  <Tab.Navigator
+    initialRouteName="Home"
+    activeColor="#EA897B"
+    barStyle={{ backgroundColor: "#114C9F" }}
+  >
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
@@ -27,10 +31,10 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Counter"
+      name="Water Track"
       component={CounterStackScreen}
       options={{
-        tabBarLabel: "Counter",
+        tabBarLabel: "Water Track",
         tabBarColor: "#1f65ff",
         tabBarIcon: ({ color }) => (
           <Icon name="ios-water" color={color} size={26} />
@@ -57,23 +61,24 @@ const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#009387",
+        backgroundColor: "#114C9F",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#B1DCE6",
       headerTitleStyle: {
         fontWeight: "bold",
-      }
+        fontFamily: "Chalkduster",
+      },
     }}
   >
     <HomeStack.Screen
-      name="Home"
+      name="WATER-MON"
       component={UserHomeScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#009387"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -86,23 +91,24 @@ const CounterStackScreen = ({ navigation }) => (
   <CounterStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#009387",
+        backgroundColor: "#114C9F",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#B1DCE6",
       headerTitleStyle: {
         fontWeight: "bold",
+        fontFamily: "Chalkduster",
       },
     }}
   >
     <CounterStack.Screen
-      name="Count"
+      name="WATER-MON"
       component={CounterScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#009387"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -115,23 +121,24 @@ const UserStackScreen = ({ navigation }) => (
   <UserStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#009387",
+        backgroundColor: "#114C9F",
       },
-      headerTintColor: "#fff",
+      headerTintColor: "#B1DCE6",
       headerTitleStyle: {
         fontWeight: "bold",
+        fontFamily: "Chalkduster",
       },
     }}
   >
     <UserStack.Screen
-      name="User"
+      name="WATER-MON"
       component={UserInfoScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#009387"
+            backgroundColor="#114C9F"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
