@@ -1,9 +1,9 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import HomeScreen from "./HomeScreen";
+import UserHomeScreen from "./UserHomeScreen";
 import CounterScreen from "./CounterScreen";
-import UserScreen from "./UserScreen";
+import UserInfoScreen from "./UserInfoScreen";
 import SignUp from "./SignUp"
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -11,34 +11,27 @@ const HomeStack = createStackNavigator();
 const CounterStack = createStackNavigator();
 const UserStack = createStackNavigator();
 
-
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator
-    initialRouteName="Home"
-    activeColor="#EA897B"
-    // inactiveColor="#D5D7D2"
-    barStyle={{ backgroundColor: "#114C9F" }}
-    // barStyle={{ backgroundColor: "#7FAFD0" }}
-  >
+  <Tab.Navigator initialRouteName="Home" activeColor="#fff">
     <Tab.Screen
       name="Home"
       component={HomeStackScreen}
       options={{
         tabBarLabel: "Home",
-        tabBarColor: "red",
+        tabBarColor: "#009387",
         tabBarIcon: ({ color }) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
       }}
     />
     <Tab.Screen
-      name="Water Track"
+      name="Counter"
       component={CounterStackScreen}
       options={{
-        tabBarLabel: "Water Track",
-        tabBarColor: "red",
+        tabBarLabel: "Counter",
+        tabBarColor: "#1f65ff",
         tabBarIcon: ({ color }) => (
           <Icon name="ios-water" color={color} size={26} />
         ),
@@ -64,26 +57,23 @@ const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator
     screenOptions={{
       headerStyle: {
-        // backgroundColor: "#B1DCE6",
-        // backgroundColor: "#1C47A5",
-        backgroundColor: "#114C9F",
+        backgroundColor: "#009387",
       },
-      headerTintColor: "#B1DCE6",
+      headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold",
-        fontFamily: "Chalkduster",
-      },
+      }
     }}
   >
     <HomeStack.Screen
-      name="WATER-MON"
-      component={HomeScreen}
+      name="Home"
+      component={UserHomeScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#7FAFD0"
+            backgroundColor="#009387"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -96,25 +86,23 @@ const CounterStackScreen = ({ navigation }) => (
   <CounterStack.Navigator
     screenOptions={{
       headerStyle: {
-        // backgroundColor: "#B1DCE6",
-        backgroundColor: "#114C9F",
+        backgroundColor: "#009387",
       },
-      headerTintColor: "#B1DCE6",
+      headerTintColor: "#fff",
       headerTitleStyle: {
         fontWeight: "bold",
-        fontFamily: "Chalkduster",
       },
     }}
   >
     <CounterStack.Screen
-      name="WATER-MON"
+      name="Count"
       component={CounterScreen}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#7FAFD0"
+            backgroundColor="#009387"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -137,7 +125,7 @@ const UserStackScreen = ({ navigation }) => (
   >
     <UserStack.Screen
       name="User"
-      component={UserScreen}
+      component={UserInfoScreen}
       options={{
         headerLeft: () => (
           <Icon.Button

@@ -1,3 +1,4 @@
+import Login from './Login'
 import React, { useEffect, useRef } from "react";
 import {
   View,
@@ -35,6 +36,7 @@ const HomeScreen = ({ navigation }) => {
         <Animated.View style={{ opacity: fade }}>
           <Image source={require("../Images/Logo.png")} />
         </Animated.View>
+
 
         <Text
           style={{
