@@ -1,3 +1,4 @@
+import Login from './Login'
 import React, { useEffect, useRef } from "react";
 import {
   View,
@@ -43,6 +44,7 @@ const HomeScreen = ({ navigation }) => {
       <Text>Help your pokemon gain energy!</Text>
       <Text>By drinking one glass, you can</Text>
       <Text>level up your pokemon!</Text>
+      <Login navigation={navigation}/>
     </View>
   );
 };
