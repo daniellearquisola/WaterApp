@@ -15,7 +15,8 @@ const MainTabScreen = () => (
     initialRouteName="Home"
     activeColor="#EA897B"
     // inactiveColor="#D5D7D2"
-    barStyle={{ backgroundColor: "#1C47A5" }}
+    barStyle={{ backgroundColor: "#114C9F" }}
+    // barStyle={{ backgroundColor: "#7FAFD0" }}
   >
     <Tab.Screen
       name="Home"
@@ -49,7 +50,8 @@ const HomeStackScreen = ({ navigation }) => (
     screenOptions={{
       headerStyle: {
         // backgroundColor: "#B1DCE6",
-        backgroundColor: "#1C47A5",
+        // backgroundColor: "#1C47A5",
+        backgroundColor: "#114C9F",
       },
       headerTintColor: "#B1DCE6",
       headerTitleStyle: {
@@ -66,7 +68,7 @@ const HomeStackScreen = ({ navigation }) => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#B1DCE6"
+            backgroundColor="#7FAFD0"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),
@@ -80,7 +82,7 @@ const CounterStackScreen = ({ navigation }) => (
     screenOptions={{
       headerStyle: {
         // backgroundColor: "#B1DCE6",
-        backgroundColor: "#1C47A5",
+        backgroundColor: "#114C9F",
       },
       headerTintColor: "#B1DCE6",
       headerTitleStyle: {
@@ -97,7 +99,7 @@ const CounterStackScreen = ({ navigation }) => (
           <Icon.Button
             name="ios-water"
             size={25}
-            backgroundColor="#B1DCE6"
+            backgroundColor="#7FAFD0"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),

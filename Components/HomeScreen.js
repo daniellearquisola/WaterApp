@@ -7,6 +7,7 @@ import {
   StatusBar,
   Image,
   Animated,
+  ImageBackground,
 } from "react-native";
 import Counter from "./Counter";
 
@@ -16,34 +17,43 @@ const HomeScreen = ({ navigation }) => {
   React.useEffect(() => {
     Animated.timing(fade, {
       toValue: 1,
-      duration: 5000,
+      duration: 8000,
       loop: true,
     }).start();
   }, [fade]);
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={{ opacity: fade }}>
-        <Image source={require("../Images/Logo.png")} />
-      </Animated.View>
+    // <View style={styles.container}>
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={{
+        uri:
+          "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-simple-light-blue-water-splash-background-material-image_131331.jpg",
+      }}
+    >
+      <View style={styles.container}>
+        <Animated.View style={{ opacity: fade }}>
+          <Image source={require("../Images/Logo.png")} />
+        </Animated.View>
 
-      <Text>It's time to hydrate!</Text>
-      <Text>It is recommended to drink 8 glasses a day</Text>
-      <Text>to stay hydrated. Hydration gives the body </Text>
-      <Text>
-        fluid to operate properly!{"\n"}
-        {"\n"}
-      </Text>
-
-      <Text>
-        WATER-MON helps you track your water intake!{"\n"}
-        {"\n"}
-      </Text>
-
-      <Text>Help your pokemon gain energy!</Text>
-      <Text>By drinking one glass, you can</Text>
-      <Text>level up your pokemon!</Text>
-    </View>
+        <Text
+          style={{
+            fontWeight: "bold",
+            textAlign: "center",
+            fontFamily: "EuphemiaUCAS-Bold",
+          }}
+        >
+          It is recommended to drink 8 glasses a day{"\n"}to stay hydrated.
+          Hydration gives the body{"\n"}
+          fluid to operate properly!{"\n"}
+          {"\n"} WATER-MON helps you track your water intake{"\n"}
+          You help your pokemon gain energy {"\n\n"}
+          For each glass of water you drink, {"\n"}
+          you can level up your pokemon!
+        </Text>
+      </View>
+    </ImageBackground>
+    // </View>
   );
 };
 
@@ -53,7 +63,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#31AAC1",
+    justifyContent: "space-evenly",
+
+    // backgroundColor: "#31AAC1",
+    // backgroundImage: "https://wallpapercave.com/wp/cw9Npu6.jpg",
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
   },
 });
