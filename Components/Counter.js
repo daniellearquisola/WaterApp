@@ -9,6 +9,7 @@ import {
   Image,
   Dimensions,
   Alert,
+  ImageBackground,
 } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import * as Font from "expo-font";
@@ -142,95 +143,112 @@ export default class Counter extends React.Component {
     const win = Dimensions.get("window");
 
     return (
-      <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 12,
-            color: "white",
-            fontWeight: "bold",
-            // fontFamily: "Menlo-Regular",
-            // fontFamily: "Georgia",
-            fontFamily: "EuphemiaUCAS-Bold",
-          }}
-        >
-          Today is {month}/{date}/{year}
-          {"\n "}
-        </Text>
-
-        <View
-          style={{
-            flexDirection: "column",
-            backgroundColor: "#B1DCE6",
-            padding: 5,
-            borderRadius: 20,
-          }}
-        >
+      <ImageBackground
+        style={styles.backgroundImage}
+        source={{
+          uri:
+            "https://png.pngtree.com/thumb_back/fw800/back_our/20190619/ourmid/pngtree-simple-light-blue-water-splash-background-material-image_131331.jpg",
+        }}
+      >
+        <View style={styles.container}>
           <Text
             style={{
-              color: "#C75943",
-              fontSize: "14",
-              textAlign: "center",
+              fontSize: 12,
+              color: "white",
+              fontWeight: "bold",
+              // fontFamily: "Menlo-Regular",
+              // fontFamily: "Georgia",
               fontFamily: "EuphemiaUCAS-Bold",
-              // paddingHorizontal: 45,
             }}
           >
-            {"\n"} Tap the water for each glass of water you drink {"\n"}
-            Tap the leaf to remove a water glass {"\n"}
+            Today is {month}/{date}/{year}
+            {"\n "}
           </Text>
 
-          <View style={{ flexDirection: "row", justifyContent: "center" }}>
-            {/* <Text style={{ color: "white" }}>Water Count: {counter}</Text> */}
+          <View
+            style={{
+              flexDirection: "column",
+              // backgroundColor: "#B1DCE6",
+              backgroundColor: "#6A7B89",
+              padding: 10,
+              borderRadius: 20,
+              opacity: 0.7,
+            }}
+          >
             <Text
               style={{
-                color: "#C75943",
-                fontSize: "18",
-                fontWeight: "bold",
+                // color: "#5A595F",
+                color: "navy",
+                fontSize: "14",
+                textAlign: "center",
                 fontFamily: "EuphemiaUCAS-Bold",
+                // paddingHorizontal: 45,
               }}
             >
-              {"\n"}Your Water Count: {counter} {"\n"}
+              Tap the water when you drink one glass {"\n"}
+              Tap the leaf to remove a water glass {"\n"}
             </Text>
-            <TouchableOpacity
-              onPress={this.combinedFunction}
-              onPressOut={this.loadImage}
-            >
-              <Image
-                style={{ width: 60, height: 60 }}
-                source={{
-                  uri:
-                    "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
-                }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={this.onSubtract}
-              onPressOut={this.loadImage}
-            >
-              {/* <Icon name="remove" size={50} /> */}
-              <Image
-                style={{ width: 60, height: 60 }}
-                source={{
-                  uri:
-                    "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
 
-        {/* <Text style={{ color: "white", fontSize: "22" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              {/* <Text style={{ color: "white" }}>Water Count: {counter}</Text> */}
+              <Text
+                style={{
+                  // color: "#5A595F",
+                  color: "navy",
+                  fontSize: 18,
+                  fontWeight: "bold",
+                  fontFamily: "EuphemiaUCAS-Bold",
+                }}
+              >
+                {"\n"}Your Water Count: {counter} {"\n"}
+              </Text>
+              <TouchableOpacity
+                onPress={this.combinedFunction}
+                onPressOut={this.loadImage}
+              >
+                <Image
+                  style={{ width: 60, height: 60, opacity: 1 }}
+                  source={{
+                    uri:
+                      "https://www.freepnglogos.com/uploads/water-drop-png/water-drop-png-index-content-uploads-12.png",
+                  }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={this.onSubtract}
+                onPressOut={this.loadImage}
+              >
+                {/* <Icon name="remove" size={50} /> */}
+                <Image
+                  style={{ width: 60, height: 60, opacity: 1 }}
+                  source={{
+                    uri:
+                      "http://clipart-library.com/images_k/transparent-leaf-clip-art/transparent-leaf-clip-art-17.png",
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+
+          {/* <Text style={{ color: "white", fontSize: "22" }}>
             {"\n"}Water Count: {counter} {"\n"}
           </Text> */}
-        <Image
-          style={{ width: 240, height: 235 }}
-          source={{
-            uri: this.state.image,
-          }}
-        />
-        {/* <Text style={{ fontSize: "23" }}>{this.state.text}</Text> */}
-        {/* <Image source={require(words)} /> */}
-        {this.state.text}
-      </View>
+          <Image
+            style={{ width: 240, height: 235 }}
+            source={{
+              uri: this.state.image,
+            }}
+          />
+          {/* <Text style={{ fontSize: "23" }}>{this.state.text}</Text> */}
+          {/* <Image source={require(words)} /> */}
+          {this.state.text}
+        </View>
+      </ImageBackground>
     );
   }
 }
@@ -238,18 +256,23 @@ export default class Counter extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#31AAC1",
-    color: "white",
+    // backgroundColor: "#31AAC1",
+    // color: "white",
     alignItems: "center",
     justifyContent: "space-evenly",
     flexDirection: "column",
-    width: "100%",
+    // width: "100%",
     fontFamily: "monospace",
   },
 
-  child: {
-    height: "50%",
-    width: "50%",
+  // child: {
+  //   height: "50%",
+  //   width: "50%",
+  // },
+
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+    padding: 40,
   },
-  imageStyle: {},
 });
