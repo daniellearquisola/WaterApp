@@ -1,13 +1,17 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+
+import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import MainTabScreen from "./Components/MainTabScreen";
+
 import UserMainTabScreen from "./Components/UserMainTabScreen"
 import CounterScreen from "./Components/CounterScreen";
 import User from "./Components/UserScreen";
 import { AuthContext } from "./Auth/context";
+
 
 const Drawer = createDrawerNavigator();
 
@@ -27,6 +31,7 @@ export default function App() {
   }));
 
   return (
+
     <AuthContext.Provider value={authContext}>
       <NavigationContainer>
         {userToken === null ? (
@@ -44,5 +49,6 @@ export default function App() {
         )}
       </NavigationContainer>
     </AuthContext.Provider>
+
   );
 }
