@@ -8,7 +8,8 @@ After the page originally renders, the user will see an egg. After one glass of 
 
 ## About this project
 Water-Mon was made during a weekend "stack-a-thon" at fullstack academy by Danielle Arquisola and Bryan Ryu. We had three days to explore a new tool/library that they were unfamiliar with. We chose to look into React Native. We both had had zero experiene with any type of mobile development prior to this project.
-This project has limitations. It is not currently connected to a database, and there is hard coded information within the components. Although we were unable to complete a fully functional most viable product, we were able to learn about how to use React Native and Expo.
+
+Unfortunately, this is not a fully functioning application. It is not currently connected to a database, and there is hard coded information within the components. Although we were unable to complete a fully functional most viable product, we were able to learn about how to use React Native and Expo.
 
 
 ## Getting Started
